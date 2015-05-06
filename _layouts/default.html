@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+ <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bristol DevOps :: {{ page.title }}</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/app.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+  $(function() {
+    $('a[href*=#]:not([href=#])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html,body').animate({
+            scrollTop: target.offset().top
+          }, 1000);
+          return false;
+        }
+      }
+    });
+  });
+  </script>
+  <!-- Bootstrap Core JavaScript -->
+
+</head>
+
+  <body>
+
+    {% include header.html %}
+
+
+        {{ content }}
+
+
+    {% include footer.html %}
+  
+  <script src="../js/bootstrap.min.js"></script>
+  </body>
+</html>

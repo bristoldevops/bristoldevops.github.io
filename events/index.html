@@ -1,0 +1,65 @@
+---
+layout: default
+nav: events
+title: Events
+permalink: /events/
+weight : 2
+--- 
+<section class="allEventsSection">
+	<div class="row">
+		<div class="col-md-9">
+			<h1>Upcoming Events</h1>
+
+			{% assign curDate = site.time | date: '%s' %}
+			{% for post in site.posts %}
+			    {% assign postStartDate = post.date | date: '%s' %}
+			    {% if postStartDate >= curDate %}
+			        <div class="row">
+						<div class="col-md-3 eventDesc">
+							<h4><a href="{{ post.url }}">{{ post.date | date: "%-d %B %Y" }}</span></a></h4>
+						</div>
+						<div class="col-md-9 eventDesc">
+							<h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
+							<p>{{ post.excerpt }}<br><a href="{{ post.url }}" class="more-link">read more</a></p>
+						</div>
+					</div>
+			    {% endif %}
+			{% endfor %}
+			
+			
+
+			<h1>Previous Events</h1>
+			{% assign curDate = site.time | date: '%s' %}
+			{% for post in site.posts %}
+			    {% assign postStartDate = post.date | date: '%s' %}
+			    {% if postStartDate < curDate %}
+			        <div class="row">
+						<div class="col-md-3 eventDesc">
+							<h4><a href="{{ post.url }}">{{ post.date | date: "%-d %B %Y" }}</span></a></h4>
+						</div>
+						<div class="col-md-9 eventDesc">
+							<h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
+							<h4>{{ post.excerpt }}<br><a href="{{ post.url }}" class="more-link">read more</a></h4>
+						</div>
+					</div>
+			    {% endif %}
+			{% endfor %}
+
+			
+
+		</div>
+
+		<div class="col-md-3 sidebar hidden-xs hidden-sm">
+		    
+		        <h1>Join us on</h1>
+		        <a href="http://www.meetup.com/Bristol-DevOps/" target="_blank"><img src="../img/meetup-logo.png"></a>
+		   
+		    <!-- <div class="right-col-item">
+		        <h1 class="title-1">Most read</h1>
+		        <h3><a href="#">An introduction to the tools we use to ensure the absolute maximum of up time.</a></h3>
+		        <h3><a href="#">An introduction to the tools we use to ensure the absolute maximum of up time.</a></h3>
+		        <h3><a href="#">An introduction to the tools we use to ensure the absolute maximum of up time.</a></h3>
+		    </div> -->
+		</div>
+	</div>
+</section>

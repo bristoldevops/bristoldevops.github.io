@@ -1,0 +1,53 @@
+---
+layout: default
+nav: home
+title: Home
+weight : 1
+---
+
+
+  <section class="welcomeSection">
+    <div class="widget center">
+      <div class="text center">
+        <div class="welcomeText">
+          <img src="img/logo.png">
+          <h1>Welcome</h1>
+          <h3>We are <span class="lightBlue">Bristol DevOps.</span> A group involved in or interested in configuration management tools, monitoring, continuous delivery, cloud computing and <span class="lightBlue">DevOps</span> culture. Developers and operations/sysadmin people and everyone else are all welcome.</h3>
+          <div ><a href="#nextEventSection"><span class="glyphicon glyphicon-chevron-down"></span></a></div>
+
+        </div>
+      </div>
+      <div class="blur">
+        <img src="img/homebackground.jpg" class="bg">
+      </div>
+    </div>
+  </section>
+
+  <section class="nextEventSection" id="nextEventSection">
+    <div class="row">
+      <div class="col-md-6 nextEvent">
+        <h1>Our upcoming Events...</h1>
+        
+      </div>
+      <div class="col-md-6 eventDescription">
+        {% assign curDate = site.time | date: '%s' %}
+          {% for post in site.posts %}
+              {% assign postStartDate = post.date | date: '%s' %}
+              {% if postStartDate >= curDate %}
+                <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+                <h4><a href="{{ post.url }}">{{ post.date | date: "%-d %B %Y" }}</span></a></h4>
+                <p>{{ post.excerpt }}<br><a href="{{ post.url }}" class="more-link">read more</a></p>
+              {% endif %}
+              {% if forloop.index == 1 %}{% break %}{% endif %}
+          {% endfor %}
+          <button type="button" class="eventDescriptionButton col-xs-12 hidden-md hidden-lg btn btn-lg-round">Click here for a list of all our<br>events</button>
+      </div>
+    </div>
+    <div class="row">
+      <a href="/events"><button type="button" class="hidden-xs hidden-sm btn btn-lg-round col-md-12 nextEventButton"><h4>Click here for a list of all our events</h4></button></a>
+    </div>
+
+
+  </section>
+
+
